@@ -12,7 +12,7 @@ export default function Home() {
 
   useEffect(() => {
     fetchProcesses();
-    const interval = setInterval(fetchProcesses, 5000); // Refresh every 10 seconds
+    const interval = setInterval(fetchProcesses, 10000); // Refresh every 10 seconds
     return () => clearInterval(interval);
   }, []);
 
@@ -20,9 +20,8 @@ export default function Home() {
     try {
       const data = await api.getProcesses();
       if (data.status === "ok") {
-        console.log(data);
-
         setProcesses(data.processes);
+        console.log(data.processes);
       }
       setError(null);
     } catch (err) {

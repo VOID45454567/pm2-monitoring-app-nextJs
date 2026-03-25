@@ -66,7 +66,7 @@ export default function ProcessCard({ process }: ProcessCardProps) {
       </div>
 
       <Link
-        href={`/processes/${process.name}`}
+        href={`/process/${process.name}`}
         className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium"
       >
         View Details

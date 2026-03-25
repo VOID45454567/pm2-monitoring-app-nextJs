@@ -1,4 +1,3 @@
-// components/TestResults.tsx
 "use client";
 
 import { TestResult } from "@/types";

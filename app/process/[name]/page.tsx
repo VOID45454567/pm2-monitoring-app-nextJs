@@ -4,7 +4,7 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { api } from "@/api/index";
 import { ProcessDetails } from "@/types";
-import LogViewer from "@/components/Logviewer";
+import LogViewer from "@/components/LogViewer";
 
 export default function ProcessDetailsPage() {
   const params = useParams();

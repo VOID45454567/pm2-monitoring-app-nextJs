@@ -1,13 +1,17 @@
 {
-    "main_app_url": "http://localhost:3003",
+    "baseUrl": "http://localhost:3004",
     "services": [
         {
+            "pm2Id": 0,
             "name": "server one",
-            "requestTimeout": 5000
+            "requestTimeout": 5000,
+            "url": "http://localhost:3005"
         },
         {
+            "pm2Id": 1,
             "name":"server two",
-            "requestTimeout": 10000
+            "requestTimeout": 10000,
+            "url": "http://localhost:3006"
         }
     ]
 }

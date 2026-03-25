@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { api } from "@/api/index";
 import { TestResult, TestSummary } from "@/types";
 import TestSummaryComponent from "@/components/TestSummary";
-import TestResultsComponent from "@/components/TestResults";
+import TestResultsComponent from "@/components/TestRersults";
 
 export default function TestsPage() {
   const [summary, setSummary] = useState<TestSummary | null>(null);
@@ -14,7 +14,7 @@ export default function TestsPage() {
 
   useEffect(() => {
     fetchTests();
-    const interval = setInterval(fetchTests, 5000); // every 15 seconds
+    const interval = setInterval(fetchTests, 15000); // Refresh every 15 seconds
     return () => clearInterval(interval);
   }, []);
 

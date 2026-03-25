@@ -1,4 +1,3 @@
-// components/TestSummary.tsx
 "use client";
 
 import { TestSummary as TestSummaryType } from "@/types";
