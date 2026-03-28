@@ -1,17 +1,89 @@
 {
-    "baseUrl": "http://localhost:3004",
-    "services": [
+  "servers": [
+    {
+      "name": "local",
+      "url": "http://localhost:3004",
+      "requestTimeout": 10000,
+      "services": [
         {
-            "pm2Id": 0,
-            "name": "server one",
-            "requestTimeout": 5000,
-            "url": "http://localhost:3005"
+          "pm2Id": 0,
+          "pm2Name": "server-one",
+          "tests": [
+            {
+              "name": "main page load",
+              "url": "http://localhost:3005/api/main",
+              "expectedStatusCode": 200
+            },
+            {
+              "name": "error page load",
+              "url": "http://localhost:3005/api/error page",
+              "expectedStatusCode": 500
+            }
+          ]
         },
         {
-            "pm2Id": 1,
-            "name":"server two",
-            "requestTimeout": 10000,
-            "url": "http://localhost:3006"
+          "pm2Id": 1,
+          "pm2Name": "server-two",
+          "tests": [
+            {
+              "name": "main page load",
+              "url": "http://localhost:3006/api/main",
+              "expectedStatusCode": 200
+            },
+            {
+              "name": "error page load",
+              "url": "http://localhost:3006/api/error/page",
+              "expectedStatusCode": 500
+            }
+          ]
         }
-    ]
+      ]
+    },
+    {
+      "name": "linux",
+      "requestTimeout": 15000,
+      "url": "www",
+      "services": [
+        {
+          "pm2Id": 0,
+          "pm2Name": "server-one",
+          "tests": [
+            {
+              "name": "main page load",
+              "url": "http://localhost:3005/api/main",
+              "expectedStatusCode": 200
+            },
+            {
+              "name": "error page load",
+              "url": "http://localhost:3005/api/error page",
+              "expectedStatusCode": 500
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "macOs",
+      "url": "macOs",
+      "requestTimeout": 10000,
+      "services": [
+        {
+          "pm2Id": 0,
+          "pm2Name": "server-one",
+          "tests": [
+            {
+              "name": "main page load",
+              "url": "http://localhost:3005/api/main",
+              "expectedStatusCode": 200
+            },
+            {
+              "name": "error page load",
+              "url": "http://localhost:3005/api/error page",
+              "expectedStatusCode": 500
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }

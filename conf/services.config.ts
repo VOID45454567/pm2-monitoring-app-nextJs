@@ -1,15 +1,7 @@
-import servicesData from './services.json';
+import config from '@/conf/services.json'
+import { Server } from '@/types'
 
-export interface ServiceConfig {
-    pm2Id: number;
-    name: string;
-    requestTimeout: number;
-    url: string;
-}
 
-export interface ServicesConfig {
-    baseUrl: string;
-    services: ServiceConfig[];
-}
+export const servers: Server[] = config.servers
 
-export const servicesConfig: ServicesConfig = servicesData;
+
