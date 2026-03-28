@@ -41,13 +41,13 @@ export const useServerChecker = (server: Server): UseServerCheckerReturn => {
         const startTime = Date.now();
         const client = new ApiClient(server.url, server.requestTimeout);
 
-        console.log(`[${server.name}] 🔍 Starting health check to ${server.url}...`);
+        // console.log(`[${server.name}] 🔍 Starting health check to ${server.url}...`);
 
         try {
             const result = await client.checkConnection();
             const responseTime = Date.now() - startTime;
 
-            console.log(`[${server.name}] ✅ Check SUCCESS! Response time: ${responseTime}ms`);
+            // console.log(`[${server.name}] ✅ Check SUCCESS! Response time: ${responseTime}ms`);
 
             const newStatus: ServerStatus = {
                 name: server.name,
@@ -108,7 +108,7 @@ export const useServerChecker = (server: Server): UseServerCheckerReturn => {
 
         intervalStartedRef.current = true;
 
-        console.log(`[${server.name}] 🚀 Starting checker with interval: ${checkInterval / 1000}s`);
+        // console.log(`[${server.name}] 🚀 Starting checker with interval: ${checkInterval / 1000}s`);
 
         // Первая проверка через 1 секунду
         timeoutRef.current = setTimeout(() => {

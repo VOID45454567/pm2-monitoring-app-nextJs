@@ -7,11 +7,10 @@ import { useServerStore } from "@/stores/useServerStore";
 export default function Home() {
   const { servers, serverStatuses, loadServers } = useServerStore();
 
-  console.log(servers);
+  // console.log(servers);
 
-  // Только загружаем серверы, без глобальной проверки
   useEffect(() => {
-    console.log("[App] Loading servers...");
+    // console.log("[App] Loading servers...");
     loadServers();
   }, [loadServers]);
 

@@ -47,25 +47,8 @@ export const ServerCard: React.FC<ServerCardProps> = ({
   // Получаем интервал для отображения
   const checkInterval = server.requestTimeout || 10000;
 
-  // Логируем статус для отладки
-  useEffect(() => {
-    console.log(`[ServerCard ${server.name}] Render - Status:`, {
-      statusReachable: status?.reachable,
-      isChecking,
-      lastResponseTime,
-      error: status?.error,
-    });
-  }, [server.name, status, isChecking, lastResponseTime]);
-
   const isOnline = status?.reachable === true; // Явная проверка на true
   const error = status?.error;
-
-  console.log(
-    `[ServerCard ${server.name}] isOnline =`,
-    isOnline,
-    "status.reachable =",
-    status?.reachable,
-  );
 
   const handleProcessSelect = useCallback(
     async (process: any) => {
@@ -94,7 +77,7 @@ export const ServerCard: React.FC<ServerCardProps> = ({
   const handleRetry = useCallback(
     (e: React.MouseEvent) => {
       e.stopPropagation();
-      console.log(`[ServerCard ${server.name}] Manual retry clicked`);
+      // console.log(`[ServerCard ${server.name}] Manual retry clicked`);
       checkConnection();
     },
     [checkConnection, server.name],
@@ -111,7 +94,6 @@ export const ServerCard: React.FC<ServerCardProps> = ({
 
   return (
     <div className="border border-neutral-800 rounded-xl overflow-hidden bg-neutral-900/30 transition-all duration-300">
-      {/* Header */}
       <div
         className="p-5 cursor-pointer hover:bg-neutral-800/50 transition-colors"
         onClick={handleToggleExpand}
