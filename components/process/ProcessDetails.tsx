@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Service, ProcessTestResult, ProcessLogs, PM2Process } from "@/types";
+import { Service } from "@/types";
 import { useProcessDetails } from "@/hooks/useProcessDetails";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";

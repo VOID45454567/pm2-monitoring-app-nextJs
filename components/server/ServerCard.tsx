@@ -77,7 +77,6 @@ export const ServerCard: React.FC<ServerCardProps> = ({
   const handleRetry = useCallback(
     (e: React.MouseEvent) => {
       e.stopPropagation();
-      // console.log(`[ServerCard ${server.name}] Manual retry clicked`);
       checkConnection();
     },
     [checkConnection, server.name],

@@ -41,7 +41,7 @@ export class ApiClient {
         );
     }
 
-    private handleError(error: AxiosError): Promise<never> {
+    private handleError(error: AxiosError) {
         console.error('[API Error]', {
             code: error.code,
             message: error.message,
@@ -49,20 +49,18 @@ export class ApiClient {
         });
 
         if (error.code === 'ECONNREFUSED') {
-            throw new Error(`${ERROR_MESSAGES.CONNECTION_REFUSED} ${this.baseUrl}`);
+            console.error(`${ERROR_MESSAGES.CONNECTION_REFUSED}: ${this.baseUrl}`)
         }
         if (error.code === 'ENOTFOUND') {
-            throw new Error(`${ERROR_MESSAGES.HOST_NOT_FOUND}: ${this.baseUrl}`);
+            console.error(`${ERROR_MESSAGES.HOST_NOT_FOUND}: ${this.baseUrl}`)
         }
         if (error.code === 'ETIMEDOUT') {
-            throw new Error(`${ERROR_MESSAGES.TIMEOUT}`);
+            console.error(`${ERROR_MESSAGES.TIMEOUT}: ${this.baseUrl}`)
         }
         if (error.response) {
-            throw new Error(
-                `${ERROR_MESSAGES.SERVER_ERROR} ${error.response.status}: ${error.response.statusText}`
-            );
+            console.error(`${ERROR_MESSAGES.SERVER_ERROR} ${error.response.status}: ${error.response.statusText}`)
         }
-        throw new Error(`${ERROR_MESSAGES.NETWORK_ERROR}: ${error.message}`);
+        console.error(`${ERROR_MESSAGES.NETWORK_ERROR}: ${this.baseUrl}`)
     }
 
     private async request<T>(fn: () => Promise<AxiosResponse<T>>): Promise<T> {
